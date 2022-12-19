@@ -1,42 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:notasaldair/models/nota.dart';
+import 'package:notasaldair/services/usersservices.dart';
 import 'package:notasaldair/values/tema.dart';
 
-class HomePage extends StatelessWidget {
-  List<Nota> misNotas = [
-    Nota(titulo: 'titulo 1', contenido: ' contenido de la nota 1'),
-    Nota(titulo: 'titulo 2', contenido: ' contenido de la nota 2'),
-    Nota(titulo: 'titulo 3', contenido: ' contenido de la nota 3'),
-    Nota(titulo: 'titulo 4', contenido: ' contenido de la nota 4'),
-  ];
+List<Nota> misNotas = [
+  Nota(titulo: 'titulo 1', contenido: ' contenido de la nota 1'),
+  Nota(titulo: 'titulo 2', contenido: ' contenido de la nota 2'),
+  Nota(titulo: 'titulo 3', contenido: ' contenido de la nota 3'),
+  Nota(titulo: 'titulo 4', contenido: ' contenido de la nota 4'),
+];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Notas APP Aldair'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return NuevaNota();
-              },
-            );
-          },
-          child: Icon(Icons.add),
-        ),
-        body: ListView(
-          children: [
-            for (Nota nota in misNotas)
-              ListTile(
-                title: Text(nota.titulo!),
-                subtitle: Text(nota.contenido!),
-              ),
-          ],
-        ));
-  }
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+      appBar: AppBar(
+        title: Text('Notas APP Aldairrr'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'nuevo');
+          //showModalBottomSheet(
+          //  context: context,
+          //  builder: (BuildContext context) {
+          ////     return NuevaNota();
+          //  },
+          //);
+        },
+        child: Icon(Icons.add),
+      ),
+      body: FutureBuilder(
+        future: UserServices().getNotas(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          List misnotas = snapshot.data ?? [];
+          return ListView(
+            children: [
+              for (Nota nota in misnotas)
+                ListTile(
+                  title: Text(nota.titulo),
+                  subtitle: Text(nota.contenido),
+                )
+            ],
+          );
+        },
+      ));
 }
 
 class NuevaNota extends StatefulWidget {
@@ -61,6 +67,7 @@ class _NuevaNotaState extends State<NuevaNota> {
             TextFormField(
               controller: _tituloController,
               decoration: const InputDecoration(labelText: 'Titulo de la nota'),
+              //
             ),
             TextFormField(
               decoration: const InputDecoration(
