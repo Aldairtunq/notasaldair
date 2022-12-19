@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1067319032599",
+    "project_id": "notasaldair",
+    "storage_bucket": "notasaldair.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067319032599:android:a2e507ea173e390d56d552",
+        "android_client_info": {
+          "package_name": "com.livcode.notasaldair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067319032599-pas8e3avrikup178824aue3oriqr2k96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDga_F_veW-JgPyvZc4QrhhcQY57ozHWnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067319032599-pas8e3avrikup178824aue3oriqr2k96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
