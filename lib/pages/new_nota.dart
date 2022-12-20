@@ -56,7 +56,8 @@ class _ModalNotaNuevaState extends State<ModalNotaNueva> {
                     ElevatedButton(
                       onPressed: () async {
                         if (_formulariokey.currentState!.validate()) {
-                          UserServices().saveNotas(_tituloController.text);
+                          UserServices().saveNotas(_tituloController.text,
+                              _contenidoController.text);
 
                           //tood
                           //agregar esto a la base de datos
