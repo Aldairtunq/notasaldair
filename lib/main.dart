@@ -9,8 +9,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: miTema(context), title: 'Notas Ap', home: HomePage());
+    return MaterialApp(routes: {
+      'nuevo': (context) => const ModalNotaNueva(),
+    }, theme: miTema(context), title: 'Notas Ap', home: HomePage());
   }
 }
 //5:43
